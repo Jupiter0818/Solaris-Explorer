@@ -2,41 +2,51 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Three.js](https://img.shields.io/badge/Three.js-r161-black) ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-**Solaris Explorer** 是一个基于 WebGL 的沉浸式 3D 宇宙探索模拟器。它利用 Three.js 和自定义着色器（GLSL）技术，构建了一个包含动态太阳系、深空天体和交互式 UI 的实时渲染环境。
+**Solaris Explorer** 是一个基于 WebGL 的沉浸式 3D 宇宙探索模拟器。该项目利用 Three.js 和自定义 GLSL 着色器技术，在浏览器中构建了一个包含动态太阳系、体积光黑洞、深空天体以及电影级视觉效果的实时渲染环境。
 
-**Solaris Explorer** is an immersive real-time 3D space simulation built with Three.js. It features a fully interactive solar system, procedural shaders, and cinematic visual effects.
+## ✨ 核心亮点
 
-## ✨ Key Features (核心功能)
+* **🌞 动态拟真太阳 (Procedural Living Sun):**
+    * 使用自定义 Fragment Shader（片元着色器）实现动态的太阳表面，模拟真实的日冕湍流和热辐射效果。
+    * 包含日冕辉光（Bloom）与基于噪声算法的表面纹理生成。
 
-* **🌞 Procedural Living Sun (动态活体太阳):** 使用自定义 Fragment Shader 实现的动态太阳表面，模拟日冕物质抛射和湍流效果。
-* **🪐 Realistic Planet Rendering (拟真行星渲染):** 包含大气层散射（Atmosphere Shader）、动态云层、土星环以及拥有自发光纹理的城市夜景。
-* **🌑 Volumetric Black Hole (体积光黑洞):** 模拟《星际穿越》风格的黑洞，包含吸积盘、引力透镜光子环和相对论喷流效果。
-* **🌌 Deep Sky Objects (深空天体):** 交互式的旋涡星系（如仙女座 M31）和创生之柱（M16），全部由粒子系统构建。
-* **🚀 Cinematic Travel (电影级穿越):** 实现了类似光速穿越的 "Warp Effect"（曲速引擎效果），伴随相机 FOV 的动态拉伸和后期光晕（Bloom）。
-* **🛸 Voyager 1 Model (旅行者1号):** 精细建模的探测器，带有高光贴图和特定的运行轨道。
-* **💻 Sci-Fi HUD Interface:** 玻璃拟态（Glassmorphism）风格的用户界面，实时显示天体数据、距离、温度和时间控制。
+* **🪐 逼真的行星渲染:**
+    * **大气散射：** 为地球、金星、火星等行星实现了基于物理的大气层光晕（Atmosphere Shader）。
+    * **土星环与卫星：** 使用数万个粒子模拟土星环，并精确还原了各大行星的主要卫星轨道。
+    * **旅行者1号 (Voyager 1):** 内置高精度的旅行者1号探测器 3D 模型，带有反光材质与独特的金色唱片结构。
 
-## 🛠️ Tech Stack (技术栈)
+* **🌑 《星际穿越》风格黑洞:**
+    * 实现了体积光吸积盘（Volumetric Accretion Disk）与引力透镜效果。
+    * 包含相对论喷流与事件视界（Event Horizon）的视觉模拟。
 
-* **Core:** HTML5, CSS3 (Glassmorphism UI)
-* **3D Engine:** [Three.js](https://threejs.org/) (v0.161 via ESM)
-* **Post-Processing:** UnrealBloomPass (辉光效果)
-* **Shaders:** Custom GLSL for Sun, Atmosphere, Black Hole accretion disk.
-* **Math:** Geometry and physics simulations for orbital mechanics.
+* **🌌 交互式深空天体:**
+    * **粒子星系：** 数万个粒子构成的旋涡星系（如仙女座 M31），支持动态旋转与色彩渐变。
+    * **创生之柱 (M16):** 使用体积云粒子技术重现了壮观的星云结构。
 
-## 🚀 How to Run (如何运行)
+* **🚀 电影级体验:**
+    * **曲速穿越 (Warp Effect):** 实现了点击天体后的光速穿越特效，伴随相机视场角（FOV）拉伸与空间扭曲。
+    * **科幻 UI 界面:** 采用玻璃拟态（Glassmorphism）设计风格，实时显示天体距离、速度、温度等遥测数据。
 
-由于项目使用了 ES Modules (`import` 语法) 和跨域资源，**不能直接双击打开 HTML 文件**。你需要一个本地服务器。
+## 🛠️ 技术栈
 
-Since this project uses ES Modules, you need a local server to avoid CORS errors.
+* **核心引擎:** [Three.js](https://threejs.org/) (r161, 基于 ESM 模块)
+* **语言:** HTML5, CSS3, JavaScript (ES6+)
+* **渲染技术:** * WebGL 2.0
+    * Post-Processing (后期处理): UnrealBloomPass (辉光), EffectComposer
+    * GLSL Shaders (自定义着色器)
+* **数学库:** 轨道力学模拟与 3D 向量计算
 
-### Option 1: VS Code (Recommended)
-1.  Install the **"Live Server"** extension in VS Code.
-2.  Right-click `Galaxy.html` and select **"Open with Live Server"**.
+## 🚀 如何运行项目
 
-### Option 2: Python
-如果你安装了 Python，可以在项目目录下运行：
-If you have Python installed, run this in your terminal:
+⚠️ **注意**：本项目使用了 ES Modules (`import` 语法) 和跨域纹理资源，**无法直接双击 HTML 文件打开**，必须在本地服务器环境下运行。
+
+### 方法 1：使用 VS Code (推荐)
+1.  在 VS Code 中安装 **"Live Server"** 扩展插件。
+2.  右键点击 `index.html` (或 `Galaxy.html`)。
+3.  选择 **"Open with Live Server"**。
+
+### 方法 2：使用 Python
+如果您已安装 Python 环境，可在项目根目录下运行终端命令：
 
 ```bash
 # Python 3
